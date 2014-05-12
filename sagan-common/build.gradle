@@ -12,6 +12,10 @@ dependencies {
     compile "org.springframework.boot:spring-boot-starter-data-jpa"
     compile "org.springframework.data:spring-data-jpa:1.5.1.RELEASE"
 
+    // explicitly depend on 4.0.3 to avoid dragging in 3.2.3
+    compile "org.springframework:spring-web:4.0.3.RELEASE"
+    compile "org.springframework:spring-webmvc:4.0.3.RELEASE"
+
     compile 'org.elasticsearch:elasticsearch:0.90.2'
     compile('io.searchbox:jest:0.0.4') {
         exclude(module: 'commons-logging')
