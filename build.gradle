@@ -10,10 +10,11 @@ buildscript {
 
     repositories {
         maven { url springRepo }
+		maven {url 'http://repo.spring.io/snapshot'}
     }
 
     dependencies {
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.0.2.RELEASE"
+		classpath "org.springframework.boot:spring-boot-gradle-plugin:1.1.0.BUILD-SNAPSHOT"
         classpath 'org.cloudfoundry:cf-gradle-plugin:1.0.2' // see deploy.gradle
     }
 }
@@ -56,6 +57,7 @@ configure(javaProjects) {
 
     repositories {
         maven { url springRepo }
+		maven {url 'http://repo.spring.io/snapshot'}
     }
 
     dependencies {
@@ -63,6 +65,7 @@ configure(javaProjects) {
         testCompile 'junit:junit'
         testCompile 'org.hamcrest:hamcrest-library'
         testCompile 'org.mockito:mockito-core'
+		versionManagement = 'io.spring.platform:platform-versions:1.0.0.BUILD-SNAPSHOT@properties'
     }
 
     configurations {
