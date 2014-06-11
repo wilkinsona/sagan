@@ -6,14 +6,14 @@ def gradleDir = "${rootProject.rootDir}/gradle"
 wrapper.gradleVersion = '1.12'
 
 buildscript {
-    ext.springRepo = 'http://repo.spring.io/libs-release'
+    ext.springRepo = 'http://repo.spring.io/libs-milestone'
 
     repositories {
         maven { url springRepo }
     }
 
     dependencies {
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.1.0.RELEASE"
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.1.1.RELEASE"
         classpath 'org.cloudfoundry:cf-gradle-plugin:1.0.2' // see deploy.gradle
     }
 }
@@ -93,5 +93,9 @@ configure(bootProjects) {
 
     springBoot.backupSource = false
     bootRun.dependsOn writeGitPropertiesFile
+
+    dependencies {
+        versionManagement 'io.spring.platform:platform-versions:1.0.0.RC1@properties'
+    }
 }
 
