@@ -1,7 +1,7 @@
 <html
   xmlns:th="http://www.thymeleaf.org"
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    layout:decorator="layout">
+    layout:decorate="~{layout}">
   <head>
     <title th:inline="text">Understanding [[${doc.subject}]]</title>
     <!-- http://opengraphprotocol.org/ -->

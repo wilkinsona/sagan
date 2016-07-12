@@ -1,11 +1,11 @@
 buildscript {
     ext.springRepo = 'http://repo.spring.io/libs-release'
     repositories {
+        mavenLocal()
         maven { url springRepo }
     }
     dependencies {
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.3.5.RELEASE"
-        classpath 'io.spring.gradle:dependency-management-plugin:0.6.0.RELEASE'
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.4.0.BUILD-SNAPSHOT"
         classpath 'org.cloudfoundry:cf-gradle-plugin:1.1.3' // see deploy.gradle
     }
 }
@@ -34,15 +34,23 @@ configure(javaProjects) {
     sourceCompatibility = vJavaLang
 
     repositories {
+        mavenLocal()
         maven { url springRepo }
     }
 
-    dependencyManagement {
-        imports {
-            mavenBom('io.spring.platform:platform-bom:2.0.5.RELEASE') {
-                bomProperties([
-                        'elasticsearch.version': '1.7.1' // see io.searchbox:jest
-                ])
+    afterEvaluate {
+        dependencyManagement {
+            imports {
+                mavenBom('io.spring.platform:platform-bom:2.1.0.BUILD-SNAPSHOT') {
+                    bomProperties([
+                            'elasticsearch.version': '1.7.1', // see io.searchbox:jest
+                            'hibernate.version': '4.3.11.Final',
+                            'thymeleaf.version': '3.0.0.RELEASE',
+                            'thymeleaf-layout-dialect.version': '2.0.0',
+                            'thymeleaf-extras-data-attribute.version': '2.0.1',
+                            'thymeleaf-extras-springsecurity4.version': '3.0.0.RELEASE'
+                    ])
+                }
             }
         }
     }
